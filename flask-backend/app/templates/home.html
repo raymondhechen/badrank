@@ -6,9 +6,19 @@
         <input type="submit" value="Add">
     </form>
 
+    <h1>Enter Game Winner</h1>
+    <form method="POST" action="/update">
+        <p>Winner:</p>
+        <input type="text" name="winner">
+        <p>Loser:</p>
+        <input type="text" name="loser">
+        <input type="submit" value="Update">
+    </form>
+
+
     <h1>Players</h1>
     {% for player in players %}
-      <p>{{player.name}}</p>
+      <p>{{player.name}} {{player.elo}}</p>
     {% endfor %}
   </body>
 </html>
