@@ -45,7 +45,12 @@
 
     <h1>Players</h1>
     {% for player in players %}
-      <p>{{player.name}} {{player.elo}}</p>
+        <p>{{player.name}} {{player.elo}}</p>
+    {% endfor %}
+
+    <h1>Games</h1>
+    {% for game in games %}
+        <p>{{game.p1}} vs. {{game.p2}}: {{game.g1p1}}-{{game.g1p2}}, {{game.g2p1}}-{{game.g2p2}}</p>
     {% endfor %}
   </body>
 </html>

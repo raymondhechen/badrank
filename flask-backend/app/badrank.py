@@ -46,7 +46,8 @@ def home():
         db.session.commit()
 
     players = Player.query.order_by(Player.elo.desc()).all() # query all players in descending order
-    return render_template("home.html", players=players)
+    games = PlayerGame.query.order_by(PlayerGame.id).all() # query all games
+    return render_template("home.html", players=players, games=games)
 
 # Select DB
 @app.route("/setDB", methods=["GET","POST"])
