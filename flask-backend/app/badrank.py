@@ -20,12 +20,13 @@ db = SQLAlchemy(app) # Initialize database connection
 # DATABASE STRUCTURES
 class Player(db.Model):
     elo = db.Column(db.Integer, nullable=False) # ELO Data
-    name = db.Column(db.String(80), unique=True, nullable=False, primary_key=True) # Name Data
+    name = db.Column(db.String(80), nullable=False, primary_key=True) # Name Data
 
 class PlayerGame(db.Model):
     # Assume p1 is winner, p2 is loser
-    p1 = db.Column(db.String(80), unique=False, nullable=False, primary_key=True) # Name Data
-    p2 = db.Column(db.String(80), unique=False, nullable=False) # Name Data
+    id = db.Column(db.Integer, primary_key=True)
+    p1 = db.Column(db.String(80), nullable=False) # Name Data
+    p2 = db.Column(db.String(80), nullable=False) # Name Data
     g1p1 = db.Column(db.Integer, nullable=False)
     g1p2 = db.Column(db.Integer, nullable=False)
     g2p1 = db.Column(db.Integer, nullable=False)
@@ -35,15 +36,7 @@ class PlayerGame(db.Model):
 
 
 # MEHTODS
-@app.route("/setDB", methods=["GET","POST"])
-def selectDB():
-    dbName = request.form.get("dbName") + ".db"
-    project_dir = os.path.dirname(os.path.abspath(__file__)) # Project dir
-    database_file = "sqlite:///{}".format(os.path.join(project_dir, dbName))
-    app.config["SQLALCHEMY_DATABASE_URI"] = database_file
-    return redirect("/")
-
-
+# Display home.html
 @app.route("/", methods=["GET","POST"])
 def home(): 
     # If form filled, add player to dB
@@ -55,7 +48,15 @@ def home():
     players = Player.query.order_by(Player.elo.desc()).all() # query all players in descending order
     return render_template("home.html", players=players)
 
+# Select DB
+@app.route("/setDB", methods=["GET","POST"])
+def selectDB():
+    dbName = request.form.get("dbName") + ".db"
+    database_file = "sqlite:///{}".format(os.path.join(project_dir, dbName))
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_file
+    return redirect("/")
 
+# Add games + update ELO
 @app.route("/update", methods=["POST"])
 def addGame():
     # ADD GAME TO DB
