@@ -1,5 +1,19 @@
 <html>
   <body>
+
+    <h1>Choose database:</h1>
+    <form method="POST" action="/setDB">
+        <select name="dbName">
+                <option value="ms">MS</option>
+                <option value="ws">WS</option>
+                <option value="md">MD</option>
+                <option value="wd">WD</option>
+                <option value="xd">XD</option>
+        </select>
+        <input type="submit" value="Select">
+    </form>
+
+
     <h1>Add player</h1>
     <form method="POST" action="/">
         <input type="text" name="name">
