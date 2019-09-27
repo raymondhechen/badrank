@@ -22,6 +22,17 @@ class Player(db.Model):
     def __repr__(self):
         return "<Name: {}>".format(self.name)
 
+class PlayerGame(db.Model):
+    # Assume p1 is winner, p2 is loser
+    p1 = db.Column(db.String(80), unique=False, nullable=False, primary_key=True) # Name Data
+    p2 = db.Column(db.String(80), unique=False, nullable=False) # Name Data
+    g1p1 = db.Column(db.Integer, nullable=False)
+    g1p2 = db.Column(db.Integer, nullable=False)
+    g2p1 = db.Column(db.Integer, nullable=False)
+    g2p2 = db.Column(db.Integer, nullable=False)
+    g3p1 = db.Column(db.Integer, nullable=True)
+    g3p2 = db.Column(db.Integer, nullable=True)
+
 
 @app.route("/", methods=["GET","POST"])
 def home(): 
@@ -36,29 +47,42 @@ def home():
 
 
 @app.route("/update", methods=["POST"])
-def updateElo():
+def addGame():
+    # ADD GAME TO DB
+    # TODO: Check if scores/games possible
+    game = PlayerGame(p1 = request.form.get("winner"),
+                      p2 = request.form.get("loser"),
+                      g1p1 = request.form.get("g1p1"),
+                      g1p2 = request.form.get("g1p2"),
+                      g2p1 = request.form.get("g2p1"),
+                      g2p2 = request.form.get("g2p2"),
+                      g3p1 = request.form.get("g3p1"),
+                      g3p2 = request.form.get("g3p2")
+                     )
+    db.session.add(game)
+    db.session.commit()
+
+    # UPDATE ELO
+    # TODO: Check if winner == loser
     winner = request.form.get("winner") # Get winner name
     loser = request.form.get("loser") # Get lose name
-
-    # if winner = loser:
-
     pWin = Player.query.filter_by(name=winner).first() # Get winning player
     pLose = Player.query.filter_by(name=loser).first() # Get losing player
-    (pWin.elo, pLose.elo) = EloRating(pWin.elo, pLose.elo, 30, 1) # Get new elos and update
+    (pWin.elo, pLose.elo) = eloRating(pWin.elo, pLose.elo, 30, 1) # Get new elos and update
     db.session.commit()
     return redirect("/")
 
 
 # Function to calculate the Probability of R1 over R2
-def Probability(rating1, rating2): 
+def probability(rating1, rating2): 
     return 1.0 * 1.0 / (1 + 1.0 * math.pow(10, 1.0 * (rating1 - rating2) / 400)) 
   
 # Function to calculate Elo rating 
 # k is a constant
 # d determines whether Pa wins or Pb wins
-def EloRating(Ra, Rb, k, d):
-    Pb = Probability(Ra, Rb) # Calculate the winning probability of Player B 
-    Pa = Probability(Rb, Ra) # Clculate the Winning probability of Player A 
+def eloRating(Ra, Rb, k, d):
+    Pb = probability(Ra, Rb) # Calculate the winning probability of Player B 
+    Pa = probability(Rb, Ra) # Clculate the Winning probability of Player A 
   
     if (d == 1): # Case 1: Player A wins 
         Ra = Ra + k * (1 - Pa) 
