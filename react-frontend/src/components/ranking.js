@@ -4,7 +4,7 @@ import './ranking.css';
 const Rankings = ({players}) => {
     return (
         <div className="main"> 
-            <div className="row"> 
+            <div className="row1"> 
                 <div className="col1">
                     <h3>Rank</h3>
                 </div>

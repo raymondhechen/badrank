@@ -56,8 +56,6 @@ def home():
         player = Player(elo=1000, name=request.args.get("name"))
         return addPlayer(player)
 
-    #return render_template("home.html", players=players, games=games)
-
 # Select DB
 @app.route("/setDB", methods=["GET","POST"])
 def selectDB():
