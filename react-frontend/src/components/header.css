@@ -1,0 +1,61 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 5%;
+    padding: 10px;
+    display: block;
+    background-color: #131240;
+    font-size: 1vh;
+    z-index: 99;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+h1.nav {
+    display: block;
+    float: left;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: #fdfdf8;
+    padding-left: 2vw;
+}
+
+nav {
+    display: block;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    padding-right: 5vw;
+    font-family: "Raleway", sans-serif
+}
+
+nav li {
+    float: right;
+    font-size: 2vh;
+    cursor: pointer;
+    display: block;
+    color: #fdfdf8;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 1vw 1vw 10px;
+    text-decoration: none;
+    pointer-events: auto;
+}
+
+nav .navAdd {
+    color: gray;
+}
+
+nav .navAdd:hover {
+    color: #005ab3c4;
+}
+
+nav li:hover {
+    color: #005ab3c4;
+}

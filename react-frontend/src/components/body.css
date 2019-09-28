@@ -1,0 +1,19 @@
+.main {
+    flex-direction: column;
+}
+
+.main .title {
+    display: flex;
+    padding-top: 10vh;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 3.5vh;
+    color: #131240;
+}
+
+.main .rankTitle {
+    display: flex;
+    padding-top: 2.5vh;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
