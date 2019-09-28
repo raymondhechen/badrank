@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import './body.css';
+import Rankings from './ranking';
 
 class Add extends Component {
     render() {
         return (
-            <h1 style={{size: '400px', padding: '30vh'}}>ADD</h1>
+            <div className="main">
+                <h1 className="title">ADD MATCH</h1>
+            </div>
         );
     }
 }

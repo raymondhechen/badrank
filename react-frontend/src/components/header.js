@@ -13,15 +13,15 @@ class NavBar extends Component {
         return (
             <Router>
                 <div className="header">
-                    <h1 class="nav">Duke Badminton</h1>
+                    <h1 className="nav">Duke Badminton</h1>
                     <nav className="nav">
                         <ul>
-                            <Link to="/add"><li class="noSelect">Add</li></Link>
-                            <Link to="/xd"><li class="noSelect">XD</li></Link>
-                            <Link to="/wd"><li class="noSelect">WD</li></Link>
-                            <Link to="/md"><li class="noSelect">MD</li></Link>
-                            <Link to="/ws"><li class="noSelect">WS</li></Link>
-                            <Link to="/ms"><li class="noSelect">MS</li></Link>
+                            <Link to="/add"><li>Add</li></Link>
+                            <Link to="/xd"><li>XD</li></Link>
+                            <Link to="/wd"><li>WD</li></Link>
+                            <Link to="/md"><li>MD</li></Link>
+                            <Link to="/ws"><li>WS</li></Link>
+                            <Link to="/ms"><li>MS</li></Link>
                         </ul>
                     </nav>
                 </div>

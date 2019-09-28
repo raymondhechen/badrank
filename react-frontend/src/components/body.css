@@ -4,16 +4,21 @@
 
 .main .title {
     display: flex;
-    padding-top: 10vh;
+    padding-top: 12.5vh;
+    padding-bottom: 5vh;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
     font-size: 3.5vh;
-    color: #131240;
+    color: white;
+    background-color: #333;
+    margin: 0;
 }
 
 .main .rankTitle {
     display: flex;
-    padding-top: 2.5vh;
+    padding-top: 5vh;
+    padding-bottom: 2.5vh;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
+    margin: 0;
 }

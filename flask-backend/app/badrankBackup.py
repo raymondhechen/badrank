@@ -5,8 +5,6 @@ from flask import Flask
 from flask import render_template
 from flask import request # for HTTP POST
 from flask import redirect # for update
-from flask import jsonify
-from flask_cors import CORS
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -16,7 +14,6 @@ database_file = "sqlite:///{}".format(os.path.join(project_dir, "ms.db")) # Data
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
-CORS(app)
 db = SQLAlchemy(app) # Initialize database connection
 
 
@@ -47,43 +44,28 @@ class PlayerGame(db.Model):
 
 
 # MEHTODS
-# Home
+# Display home.html
 @app.route("/", methods=["GET","POST"])
 def home(): 
-    if request.method == "GET":
-        return getPlayers()
-    elif request.method == "POST":
-        player = Player(elo=1000, name=request.args.get("name"))
-        return addPlayer(player)
+    # If form filled, add player to dB
+    if request.form:
+        player = Player(elo=1000, name=request.form.get("name"))
+        db.session.add(player)
+        db.session.commit()
 
-    #return render_template("home.html", players=players, games=games)
+    players = Player.query.order_by(Player.elo.desc()).all() # query all players in descending order
+    games = PlayerGame.query.order_by(PlayerGame.id).all() # query all games
+    return render_template("home.html", players=players, games=games)
 
 # Select DB
 @app.route("/setDB", methods=["GET","POST"])
 def selectDB():
-    dbName = request.args.get("dbName") + ".db"
+    dbName = request.form.get("dbName") + ".db"
     database_file = "sqlite:///{}".format(os.path.join(project_dir, dbName))
     app.config["SQLALCHEMY_DATABASE_URI"] = database_file
     return redirect("/")
 
-
-# ACCESSORS
-def getPlayers():
-    players = Player.query.order_by(Player.elo.desc()).all() # query all players in descending order
-    return jsonify(players= [p.serialize for p in players])
-
-def getGames():
-    games = PlayerGame.query.order_by(PlayerGame.id).all() # query all games
-    return jsonify(players= [g.serialize for g in games])
-
-def addPlayer(player):
-    db.session.add(player)
-    db.session.commit()
-    return getPlayers()
-
-
-# MODIFIERS
-# Update elo
+# Add games + update ELO
 @app.route("/update", methods=["POST"])
 def addGame():
     # ADD GAME TO DB
@@ -110,6 +92,7 @@ def addGame():
     db.session.commit()
     return redirect("/")
 
+
 # Function to calculate the Probability of R1 over R2
 def probability(rating1, rating2): 
     return 1.0 * 1.0 / (1 + 1.0 * math.pow(10, 1.0 * (rating1 - rating2) / 400)) 
@@ -128,7 +111,7 @@ def eloRating(Ra, Rb, k, d):
         Ra = Ra + k * (0 - Pa) 
         Rb = Rb + k * (1 - Pb) 
 
-    return (round(Ra,2), round(Rb,2))
+    return (Ra, Rb)
 
 
 
