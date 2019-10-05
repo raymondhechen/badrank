@@ -9,11 +9,7 @@ import './add.css';
 class Add extends Component {
     render() {
         return (
-            <div> 
-            <div className="main">
-                <h1 className="title">ADD</h1>
-            </div>
-
+            <div>
             <div style={{textAlign:'center'}}>
                 <h2>Choose Event</h2>
                 <div className="event">
@@ -61,7 +57,7 @@ class Add extends Component {
                             <input type="number" name="g3p1"/>
                             <input type="number" name="g3p2"/>
                             <br/>
-                            <input type="submit" value="Add Game"/>
+                            <input type="submit" value="Add"/>
                         </form>
                     </div>
                 </div>
@@ -77,6 +73,7 @@ class Add extends Component {
     }
 
     state = {
+        db: [],
         players: []
         //games: []
     }

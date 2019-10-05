@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MS from './ms';
 import WS from './ws';
 import MD from './md';
 import WD from './wd';
 import XD from './xd';
-import Add from './add';
+import Pass from './pass';
 import './header.css';
 
 class NavBar extends Component {
@@ -30,7 +30,7 @@ class NavBar extends Component {
                 <Route path="/md" component={MD}/>
                 <Route path="/wd" component={WD}/>
                 <Route path="/xd" component={XD}/>
-                <Route path="/add" component={Add}/>
+                <Route path="/add" component={Pass}/>
             </Router>
         );
     }
