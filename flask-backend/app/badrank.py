@@ -32,7 +32,6 @@ class Player(db.Model):
             'name': self.name,
         }
 
-
 class PlayerGame(db.Model):
     # Assume p1 is winner, p2 is loser
     id = db.Column(db.Integer, primary_key=True)
@@ -45,13 +44,71 @@ class PlayerGame(db.Model):
     g3p1 = db.Column(db.Integer, nullable=True)
     g3p2 = db.Column(db.Integer, nullable=True)
 
+    @property
+    def serialize(self):
+        return {
+            'p1': self.p1,
+            'p2': self.p2,
+            'g1p1': self.g1p1,
+            'g1p2': self.g1p2,
+            'g2p1': self.g2p1,
+            'g2p2': self.g2p2,
+            'g3p1': self.g3p1,
+            'g3p2': self.g3p2
+        }
+
+class PlayerDoubles(db.Model):
+    elo = db.Column(db.Integer, nullable=False) # ELO Data
+    name1 = db.Column(db.String(80), nullable=False, primary_key=True) # Name Data
+    name2 = db.Column(db.String(80), nullable=False) # Name Data
+
+    @property
+    def serialize(self):
+        return {
+            'elo': self.elo,
+            'name1': self.name1,
+            'name2': self.name2
+        }
+
+class PlayerGameDoubles(db.Model):
+    # Assume p1 is winner, p2 is loser
+    id = db.Column(db.Integer, primary_key=True)
+    p11 = db.Column(db.String(80), nullable=False) # Name Data
+    p12 = db.Column(db.String(80), nullable=False) # Name Data
+    p21 = db.Column(db.String(80), nullable=False) # Name Data
+    p22 = db.Column(db.String(80), nullable=False) # Name Data
+    g1p1 = db.Column(db.Integer, nullable=False)
+    g1p2 = db.Column(db.Integer, nullable=False)
+    g2p1 = db.Column(db.Integer, nullable=False)
+    g2p2 = db.Column(db.Integer, nullable=False)
+    g3p1 = db.Column(db.Integer, nullable=True)
+    g3p2 = db.Column(db.Integer, nullable=True)
+
+    @property
+    def serialize(self):
+        return {
+            'p11': self.p11,
+            'p12': self.p12,
+            'p21': self.p21,
+            'p22': self.p22,
+            'g1p1': self.g1p1,
+            'g1p2': self.g1p2,
+            'g2p1': self.g2p1,
+            'g2p2': self.g2p2,
+            'g3p1': self.g3p1,
+            'g3p2': self.g3p2
+        }
+
+
 
 # MEHTODS
+dbName = "ms"
+
 # Home
 @app.route("/", methods=["GET","POST"])
 def home(): 
     if request.method == "GET":
-        return getPlayers()
+        return getAll()
     elif request.method == "POST":
         player = Player(elo=1000, name=request.args.get("name"))
         return addPlayer(player)
@@ -59,28 +116,47 @@ def home():
 # Select DB
 @app.route("/setDB", methods=["GET","POST"])
 def selectDB():
-    dbName = request.args.get("dbName") + ".db"
-    database_file = "sqlite:///{}".format(os.path.join(project_dir, dbName))
+    global dbName
+    dbName = request.args.get("dbName")
+    database_file = "sqlite:///{}".format(os.path.join(project_dir, dbName + ".db"))
     app.config["SQLALCHEMY_DATABASE_URI"] = database_file
     return redirect("/")
 
 
 # ACCESSORS
-def getPlayers():
-    players = Player.query.order_by(Player.elo.desc()).all() # query all players in descending order
-    return jsonify(players= [p.serialize for p in players])
+def getAll():
+    #TODO: CASES IF DOUBLES: FIX REACT PORTION FOR GAMES AND FIX FLASK PORTION FOR GETTING
+    if (dbName == "ms" or dbName == "ws"):
+        players = Player.query.order_by(Player.elo.desc()).all() # query all players in descending order
+        games = PlayerGame.query.all()
+        return jsonify({'players': [p.serialize for p in players], 'games': [g.serialize for g in games]})
+    elif (dbName == "md" or dbName == "wd" or dbName == "xd"):
+        players = PlayerDoubles.query.order_by(PlayerDoubles.elo.desc()).all() # query all players in descending order
+        games = PlayerGameDoubles.query.all()
+        return jsonify({'players': [p.serialize for p in players], 'games': [g.serialize for g in games]})
 
-def getGames():
-    games = PlayerGame.query.order_by(PlayerGame.id).all() # query all games
-    return jsonify(players= [g.serialize for g in games])
+# def getPlayers():
+#     global dbName
+#     if (dbName == "ms" or dbName == "ws"):
+#         players = Player.query.order_by(Player.elo.desc()).all() # query all players in descending order
+#         return jsonify(players= [p.serialize for p in players])
+#     elif (dbName == "md" or dbName == "wd" or dbName == "xd"):
+#         players = PlayerDoubles.query.order_by(PlayerDoubles.elo.desc()).all() # query all players in descending order
+#         return jsonify(players= [p.serialize for p in players])
 
+# def getGames():
+#     games = PlayerGame.query.order_by(PlayerGame.id).all() # query all games
+#     return jsonify(players= [g.serialize for g in games])
+
+
+# ADDERS
 def addPlayer(player):
     db.session.add(player)
     db.session.commit()
     return getPlayers()
 
 
-# MODIFIERS
+# MODIFIER
 # Update elo
 @app.route("/update", methods=["POST"])
 def addGame():
