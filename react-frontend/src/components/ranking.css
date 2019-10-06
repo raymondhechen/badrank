@@ -1,57 +1,116 @@
-.main .row {
+.mainSingles .row {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
+    padding-bottom: 10px;
 }
 
-.main .row h3 {
+.mainSingles .row h3 {
     font-family: 'Roboto', sans-serif;
     color: rgb(79, 79, 79);
 }
 
-.main .row .col1 {
+.mainSingles .row .col1 {
     width: 7.5vw;
     text-align: center;
     font-family: 'Roboto', sans-serif;
     padding: 1vh 0 1vh 0;
 }
 
-.main .row .col2 {
-    width: 7.5vw;
+.mainSingles .row .col2 {
+    width: 9vw;
     font-family: 'Roboto', sans-serif;
     padding: 1vh 0 1vh 1vw;
 }
 
-.main .row .col3 {
+.mainSingles .row .col3 {
     width: 10vw;
     font-family: 'Roboto', sans-serif;
-    padding: 1vh 0 1vh 1vw;
+    padding: 1vh 0 1vh 5vw;
 }
 
 
-.main .row1 {
+.mainSingles .row1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
 }
 
-.main .row1 .col1 {
+.mainSingles .row1 .col1 {
     width: 7.5vw;
     text-align: center;
     font-family: 'Roboto', sans-serif;
     padding: 1vh 0 1vh 0;
 }
 
-.main .row1 .col2 {
-    width: 7.5vw;
+.mainSingles .row1 .col2 {
+    width: 9vw;
     font-family: 'Roboto', sans-serif;
     padding: 1vh 0 1vh 1vw;
 }
 
-.main .row1 .col3 {
+.mainSingles .row1 .col3 {
     width: 10vw;
     font-family: 'Roboto', sans-serif;
+    padding: 1vh 0 1vh 5vw;
+}
+
+.mainDoubles .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.mainDoubles .row h3 {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(79, 79, 79);
+}
+
+.mainDoubles .row .col1 {
+    width: 7.5vw;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    padding: 1vh 0 1vh 0;
+}
+
+.mainDoubles .row .col2 {
+    width: 9vw;
+    font-family: 'Roboto', sans-serif;
     padding: 1vh 0 1vh 1vw;
+}
+
+.mainDoubles .row .col3 {
+    width: 10vw;
+    font-family: 'Roboto', sans-serif;
+    padding: 1vh 0 1vh 5vw;
+}
+
+
+.mainDoubles .row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.mainDoubles .row1 .col1 {
+    width: 7.5vw;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    padding: 1vh 0 1vh 0;
+}
+
+.mainDoubles .row1 .col2 {
+    width: 9vw;
+    font-family: 'Roboto', sans-serif;
+    padding: 1vh 0 1vh 1vw;
+}
+
+.mainDoubles .row1 .col3 {
+    width: 10vw;
+    font-family: 'Roboto', sans-serif;
+    padding: 1vh 0 1vh 5vw;
 }

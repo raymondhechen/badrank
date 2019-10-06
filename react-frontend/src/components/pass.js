@@ -12,7 +12,6 @@ class Pass extends Component {
 
     callBack = (passBool) => {
         this.setState({passCorrect: passBool})
-        console.log(passBool);
     }
 
     render() {

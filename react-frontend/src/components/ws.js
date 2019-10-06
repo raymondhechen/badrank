@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './body.css';
 import Rankings from './ranking';
+import Games from './games';
 
 class WS extends Component {
     render() {
@@ -8,15 +9,24 @@ class WS extends Component {
             <div className="main">
                 <h1 className="title">WOMENS SINGLES</h1>
                 <h2 className="rankTitle">Ranking</h2>
-                <Rankings players = {this.state.players}/>
-                <h2 className="rankTitle">Games</h2>
+                <Rankings type={this.state.type} players={this.state.players}/>
+                <br/>
+                <br/>
+                <br/>
+                <div className="bottom">
+                    <h2 className="rankTitle">Games</h2>
+                    <Games type={this.state.type} games={this.state.games}/>
+                    <br/>
+                    <br/>
+                </div>
             </div>
         );
     }
 
     state = {
-        players: []
-        //games: []
+        type: "singles",
+        players: [],
+        games: []
     }
 
     componentDidMount() {
@@ -24,6 +34,7 @@ class WS extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({ players: data.players })
+                this.setState({ games: data.games })
             })
             .catch(console.log)
     }

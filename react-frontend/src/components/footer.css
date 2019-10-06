@@ -1,0 +1,14 @@
+.page {
+    position: relative;
+    min-height: 91vh;
+}
+
+.footer {
+    background-color: #131240;
+    font-family: "Raleway", sans-serif;
+    font-size: 12.5px;
+    color: white;
+    text-align: center;
+    padding: 2.5vh 0;
+    bottom: 0;
+}
