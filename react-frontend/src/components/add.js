@@ -10,7 +10,6 @@ import './add.css';
 class Add extends Component {
     render() {
         if (this.state.type === "singles") {
-            console.log("SINGLES");
             return (
                 <div>
                 <div style={{textAlign:'center'}}>
@@ -80,7 +79,6 @@ class Add extends Component {
             );
         }
         else if (this.state.type === "doubles") {
-            console.log("DOUBLES");
             return (
                 <div>
                 <div style={{textAlign:'center'}}>
@@ -172,7 +170,6 @@ class Add extends Component {
         
         this.setState({option: selectedOption.value.toLowerCase()});
         // Set game type to render either 1 or 2 players for forms
-        console.log(this.state.option);
         if (selectedOption.value.toLowerCase() === "md" || selectedOption.value.toLowerCase() === "wd" || selectedOption.value.toLowerCase() === "xd") {
             this.setState({type: "doubles"});
         }
