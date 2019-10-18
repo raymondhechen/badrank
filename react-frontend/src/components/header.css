@@ -12,6 +12,22 @@
     font-family: "Montserrat", sans-serif;
 }
 
+@media only screen and (max-width: 600px) {
+    .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 5%;
+        padding: 10px;
+        display: block;
+        background-color: #131240;
+        font-size: 1vh;
+        z-index: 99;
+        color: white;
+        font-family: "Montserrat", sans-serif;
+    }
+}
+
 h1.nav {
     display: block;
     float: left;
@@ -20,6 +36,19 @@ h1.nav {
     text-decoration: none;
     color: #fdfdf8;
     padding-left: 2vw;
+}
+
+@media only screen and (max-width: 600px) {
+    h1.nav {
+        display: block;
+        padding-top: 2.5px;
+        float: left;
+        font-size: 3.5vw;
+        text-transform: uppercase;
+        text-align: center;
+        text-decoration: none;
+        color: #fdfdf8;
+    }  
 }
 
 nav {
@@ -35,6 +64,18 @@ nav ul {
     font-family: "Raleway", sans-serif
 }
 
+@media only screen and (max-width: 600px) {
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        padding-top: 2.5px;
+        padding-right: 5vw;
+        font-family: "Raleway", sans-serif
+    }
+}
+
 nav li {
     float: right;
     font-size: 2vh;
@@ -46,6 +87,21 @@ nav li {
     padding: 10px 1vw 1vw 10px;
     text-decoration: none;
     pointer-events: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    nav li {
+        float: right;
+        font-size: 3vw;
+        cursor: pointer;
+        display: block;
+        color: #fdfdf8;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px 1vw 1vw 10px;
+        text-decoration: none;
+        pointer-events: auto;
+    }
 }
 
 nav .navAdd {
