@@ -6,7 +6,7 @@ class Home extends Component {
         return (
             <div className="main">
                 <h1 className="homeTitle">DUKE CLUB BADMINTON</h1>
-                <h2 className="homeDesc">Match Recording and Ranking System</h2>
+                <h2 className="homeDesc">Welcome! Please choose an event above to see details.</h2>
             </div>
         );
     }
