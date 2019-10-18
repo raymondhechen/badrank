@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from './home';
 import MS from './ms';
 import WS from './ws';
 import MD from './md';
@@ -28,6 +29,7 @@ class NavBar extends Component {
                             </ul>
                         </nav>
                     </div>
+                    <Route exact path="/" component={Home}/>
                     <Route path="/ms" component={MS}/>
                     <Route path="/ws" component={WS}/>
                     <Route path="/md" component={MD}/>

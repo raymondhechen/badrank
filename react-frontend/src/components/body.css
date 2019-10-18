@@ -2,6 +2,19 @@
     flex-direction: column;
 }
 
+.homeTitle {
+    display: flex;
+    padding-top: 12.5vh;
+    padding-bottom: 5vh;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 3vh;
+    color: white;
+    background-color: #333;
+    text-transform: uppercase;
+    margin: 0;
+}
+
 .main .title {
     display: flex;
     padding-top: 12.5vh;
