@@ -11,7 +11,7 @@ Flask REST API
 ReactJS
 
 
-## Helpful Links
+## Helpful Links: Flask
 - https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 - https://kite.com/blog/python/flask-restful-api-tutorial/
 - https://realpython.com/the-ultimate-flask-front-end/
@@ -24,3 +24,12 @@ ReactJS
 - https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf
 - https://blog.logrocket.com/getting-started-with-react-select/
 - https://www.robinwieruch.de/conditional-rendering-react
+
+## Helpful Links: Heroku
+- https://medium.com/the-andela-way/deploying-your-flask-application-to-heroku-c99050bce8f9
+- https://pybit.es/deploy-flask-heroku.html
+- https://devcenter.heroku.com/articles/git
+- https://medium.com/@johnbeynon/sharing-databases-between-apps-on-heroku-571b3631bf78
+- https://medium.com/the-andela-way/deploying-a-python-flask-app-to-heroku-41250bda27d0
+- https://medium.com/@dushan14/create-a-web-application-with-python-flask-postgresql-and-deploy-on-heroku-243d548335cc
+- https://dev.to/paultopia/the-easiest-possible-way-to-throw-a-webapp-online-flask--heroku--postgres-185o
