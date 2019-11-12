@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/raymondchen/anaconda3/envs/flask/bin/python"
+    "python.pythonPath": "/Users/raymondchen/anaconda3/envs/flask/bin/python",
+    "git.ignoreLimitWarning": true
 }
