@@ -11,6 +11,16 @@
 - https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf
 - https://blog.logrocket.com/getting-started-with-react-select/
 - https://www.robinwieruch.de/conditional-rendering-react
+- https://dev.to/paultopia/the-easiest-possible-way-to-throw-a-webapp-online-flask--heroku--postgres-185o
+- https://flask.palletsprojects.com/en/1.1.x/patterns/packages/
+
+## Helpful Links: Databases
+- https://stackoverflow.com/questions/4581727/convert-sqlite-sql-dump-file-to-postgresql
+- https://devcenter.heroku.com/articles/heroku-postgresql#designating-a-primary-database
+- https://devcenter.heroku.com/articles/heroku-mysql#provision-a-mysql-add-on
+- https://pgloader.readthedocs.io/en/latest/ref/sqlite.html
+- https://medium.com/@sethweinheimer/migrating-a-heroku-app-from-mysql-to-postgres-using-pgloader-ecfddd55173e
+- https://medium.com/@nathanwillson/converting-from-mysql-to-postgres-with-pgloader-for-heroku-b1212c6ad932
 
 ## Helpful Links: Heroku
 - https://medium.com/the-andela-way/deploying-your-flask-application-to-heroku-c99050bce8f9
