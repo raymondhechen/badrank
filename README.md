@@ -1,6 +1,6 @@
 ![alt text](/cover.png)
 
 # badrank
-Automated ELO ranking and match tracking system for Duke Club Badminton made with Flask, SQLAlchemy, Postgresql, ReactJS
+Automated ELO ranking and match tracking system for Duke Club Badminton made with Flask, SQLAlchemy, PostgreSQL, ReactJS
 
-rank.dukebadminton.org
+http://rank.dukebadminton.org

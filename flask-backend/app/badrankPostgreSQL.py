@@ -1,4 +1,5 @@
 import os
+import sys
 import math
 
 from flask import Flask 
@@ -6,12 +7,15 @@ from flask import render_template
 from flask import request # for HTTP POST
 from flask import redirect # for update
 from flask import jsonify
+from flask_heroku import Heroku
 
 from flask_sqlalchemy import SQLAlchemy
 
 # INITIAL SETUP --> START WITH ms.db
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+heroku = Heroku(app)
 db = SQLAlchemy(app) # Initialize database connection
 
 
