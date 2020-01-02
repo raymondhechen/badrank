@@ -1,0 +1,29 @@
+.page {
+    position: relative;
+    min-height: 91vh;
+}
+
+.footer {
+    height: auto;
+    background-color: #131240;
+    font-family: "Raleway", sans-serif;
+    font-size: 12.5px;
+    color: white;
+    text-align: center;
+    padding: 2.5vh 0;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .footer {
+        height: auto;
+        background-color: #131240;
+        font-family: "Raleway", sans-serif;
+        font-size: 12.5px;
+        color: white;
+        text-align: center;
+        padding: 2.75vh 0;
+        bottom: 0;
+        margin: 0;
+    }
+}
