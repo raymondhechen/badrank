@@ -1,3 +1,5 @@
+# We're now [shuttlerank.com](http://shuttlerank.com/)!
+
 ![alt text](/cover.png)
 
 # shuttlerank
